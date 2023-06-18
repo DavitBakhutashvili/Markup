@@ -169,7 +169,7 @@ const ToggleWrapper = styled.div`
 const ToggleSwitch = styled.label`
   position: relative;
   display: inline-block;
-  width: 50px;
+  width: 60px;
   height: 26px;
   border-radius: 13px;
   background-color: ${(props) => (props.checked ? '#2d62ed' : 'transparent')};

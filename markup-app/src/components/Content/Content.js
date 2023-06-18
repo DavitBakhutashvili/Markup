@@ -20,6 +20,12 @@ const Content = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
   const [inputValue, setInputValue] = useState('');
   const [editorContent, setEditorContent] = useState('');
+  const [isChecking, setIsChecking] = useState(false);
+
+  const handleCheckButtonClick = () => {
+    setIsChecking(true);
+    cl.start();
+  };
 
   const handleLanguageChange = (event) => {
     const selectedLanguageCode = event.target.value;
@@ -30,7 +36,9 @@ const Content = () => {
   };
 
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+    const value = event.target.value;
+    setInputValue(value);
+    setEditorContent(value);
   };
 
   const characterCount = inputValue.length;
@@ -41,18 +49,18 @@ const Content = () => {
     'გრძელი ტექსტი დასამუშავებლად. სასვენი ნიშნებით და სხვა სიმბოლოებით’';
   cl.onresult = function (result) {
     var MyResult = result.sourceUrl;
-    console.log('my result:', MyResult);
+    setIsChecking(false);
   };
-
-  cl.start();
 
   return (
     <ContentWrapper>
       <StyledButtonContainer>
-        <CheckButton>
-          <img src={Done} alt="doneIcon" />
-          <StyledCheckButtonText>Check</StyledCheckButtonText>
-        </CheckButton>
+        {!isChecking && (
+          <CheckButton onClick={handleCheckButtonClick}>
+            <img src={Done} alt="doneIcon" />
+            <StyledCheckButtonText>Check</StyledCheckButtonText>
+          </CheckButton>
+        )}
         <CopyButton>
           <img src={Copy} alt="copyIcon" />
           <StyledCopyButtonText>Copy</StyledCopyButtonText>
@@ -80,7 +88,7 @@ const Content = () => {
         <TextArea
           value={inputValue}
           onChange={handleInputChange}
-          placeholder="Enter your text"
+          placeholder="| Type or paste (⌘+V) something here."
         />
       </TextAreaContainer>
       <StyledContainer>
@@ -89,9 +97,10 @@ const Content = () => {
           onChange={setEditorContent}
           placeholder="Enter your text"
         />
+
         <StyledCountWrapper>
           <CountText>
-            {characterCount} characters, {wordCount} words{' '}
+            {characterCount} characters, {wordCount} words
           </CountText>
         </StyledCountWrapper>
       </StyledContainer>
@@ -171,7 +180,6 @@ const StyledLine = styled.div`
   height: 24px;
   left: calc(50% - 1px / 2 + 603.5px);
   top: calc(50% - 24px / 2 - 385px);
-
   border: 1px solid #cccaca;
 `;
 
@@ -179,13 +187,12 @@ const DropdownWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 4px 14px;
-  gap: 8px;
+  padding: 14px;
+  gap: 10px;
   position: absolute;
   width: 144px;
   height: 36px;
-  //   left: 1340px;
-  top: 140px;
+  top: 130px;
   float: right;
   right: 170px;
   background: #f8f8f8;
@@ -265,6 +272,7 @@ const TextAreaContainer = styled.div`
   align-items: center;
   width: 90%;
   height: 120px;
+  margin-left: 100px;
 `;
 
 const TextArea = styled.textarea`
@@ -296,8 +304,8 @@ const StyledCountWrapper = styled.div`
   justify-content: center;
   padding: 8px 20px;
   gap: 10px;
-  width: 192px;
-  height: 36px;
+  width: fit-content;
+  height: 30px;
   margin-left: 400px;
   margin-bottom: 50px;
   background: #ffffff;
