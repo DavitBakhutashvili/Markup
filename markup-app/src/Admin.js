@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from './components/Header/Header';
+import Menu from './components/Menu/Menu';
 
 const Admin = () => {
   return (
     <AdminPageWrapper>
       <Header />
       <AdminPageContainer>
-        {/* <Menu />
-        <Content /> */}
+        <Menu />
+        {/* <Content /> */}
       </AdminPageContainer>
     </AdminPageWrapper>
   );
