@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Done from '../../assets/done2.png';
+import Done from '../../assets/done.png';
 import Delete from '../../assets/delete.png';
 import Copy from '../../assets/copy.png';
 import Georgia from '../../assets/georgia.png';
-import British from '../../assets/british.png';
+import British from '../../assets/britain.png';
 import Spain from '../../assets/spain.png';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import MyClass from '../myClass/myClass';
+import MyClass from '../../helpers/myClass';
 
 const Content = () => {
   const languages = [

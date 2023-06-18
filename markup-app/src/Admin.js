@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from './components/Header/Header';
 import Menu from './components/Menu/Menu';
+import Content from './components/Content/Content';
 
 const Admin = () => {
   return (
@@ -9,7 +10,7 @@ const Admin = () => {
       <Header />
       <AdminPageContainer>
         <Menu />
-        {/* <Content /> */}
+        <Content />
       </AdminPageContainer>
     </AdminPageWrapper>
   );
