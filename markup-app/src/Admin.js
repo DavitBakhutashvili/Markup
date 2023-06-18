@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import Header from './components/Header/Header';
 
 const Admin = () => {
   return (
     <AdminPageWrapper>
-      {/* <Header /> */}
+      <Header />
       <AdminPageContainer>
         {/* <Menu />
         <Content /> */}
