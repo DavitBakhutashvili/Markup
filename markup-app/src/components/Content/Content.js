@@ -92,7 +92,7 @@ const Content = () => {
         />
       </TextAreaContainer>
       <StyledContainer>
-        <ReactQuill
+        <ReactQuillWrapper
           value={editorContent}
           onChange={setEditorContent}
           placeholder="Enter your text"
@@ -112,13 +112,15 @@ export default Content;
 
 const ContentWrapper = styled.main`
   flex-grow: 1;
+  max-width: 1520px; /* Adjust the value as needed */
+  margin: 0 auto; /* Center the content horizontally */
 `;
 
 const StyledButtonContainer = styled.div`
   display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap to the next line */
   justify-content: center;
   align-items: center;
-  width: 90%;
   height: 120px;
   border-bottom: 1px solid #ededed;
 `;
@@ -138,6 +140,10 @@ const CheckButton = styled.button`
   cursor: pointer;
   background: #2d62ed;
   border-radius: 6px;
+  @media (max-width: 768px) {
+    width: 100%; /* Take up full width on smaller screens */
+    margin-top: 10px; /* Add some space between buttons */
+  }
 `;
 
 const CopyButton = styled.button`
@@ -155,6 +161,10 @@ const CopyButton = styled.button`
   top: 145px;
   background: #ededed;
   border-radius: 4px;
+  @media (max-width: 768px) {
+    width: 100%; /* Take up full width on smaller screens */
+    margin-top: 10px; /* Add some space between buttons */
+  }
 `;
 
 const DeleteButton = styled.button`
@@ -172,6 +182,10 @@ const DeleteButton = styled.button`
   top: 145px;
   background: #f8f8f8;
   border-radius: 4px;
+  @media (max-width: 768px) {
+    width: 100%; /* Take up full width on smaller screens */
+    margin-top: 10px; /* Add some space between buttons */
+  }
 `;
 
 const StyledLine = styled.div`
@@ -181,6 +195,9 @@ const StyledLine = styled.div`
   left: calc(50% - 1px / 2 + 603.5px);
   top: calc(50% - 24px / 2 - 385px);
   border: 1px solid #cccaca;
+  @media (max-width: 768px) {
+    display: none; /* Hide the line on smaller screens */
+  }
 `;
 
 const DropdownWrapper = styled.div`
@@ -197,6 +214,11 @@ const DropdownWrapper = styled.div`
   right: 170px;
   background: #f8f8f8;
   border-radius: 4px;
+  @media (max-width: 768px) {
+    width: 100%; /* Take up full width on smaller screens */
+    margin-top: 10px; /* Add some space between buttons */
+    justify-content: flex-end; /* Align the dropdown to the right */
+  }
 `;
 
 const StyledCheckButtonText = styled.span`
@@ -268,11 +290,13 @@ const Option = styled.option``;
 
 const TextAreaContainer = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: 90%;
-  height: 120px;
-  margin-left: 100px;
+  float: left;
+  @media (max-width: 768px) {
+    margin-left: 0; /* Remove the left margin on smaller screens */
+  }
 `;
 
 const TextArea = styled.textarea`
@@ -292,9 +316,19 @@ const StyledContainer = styled.div`
   align-items: center;
   margin-left: 50px;
   width: 90%;
-  height: 120px;
-  margin-top: 630px;
+  flex-shrink: 0;
   gap: 50px;
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack the elements vertically on smaller screens */
+    align-items: flex-start; /* Align elements to the left */
+    margin-left: 0; /* Remove the left margin on smaller screens */
+    margin-top: 30px; /* Adjust the spacing */
+  }
+`;
+
+const ReactQuillWrapper = styled(ReactQuill)`
+  margin-top: 30px;
+  flex-shrink: 0;
 `;
 
 const StyledCountWrapper = styled.div`
@@ -307,7 +341,7 @@ const StyledCountWrapper = styled.div`
   width: fit-content;
   height: 30px;
   margin-left: 400px;
-  margin-bottom: 50px;
+  //   margin-bottom: 50px;
   background: #ffffff;
 `;
 
