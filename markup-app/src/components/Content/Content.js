@@ -328,7 +328,7 @@ const StyledContainer = styled.div`
 
 const ReactQuillWrapper = styled(ReactQuill)`
   margin-top: 30px;
-  flex-shrink: 0;
+  //   flex-shrink: 0;
 `;
 
 const StyledCountWrapper = styled.div`
@@ -341,7 +341,6 @@ const StyledCountWrapper = styled.div`
   width: fit-content;
   height: 30px;
   margin-left: 400px;
-  //   margin-bottom: 50px;
   background: #ffffff;
 `;
 
